@@ -1,7 +1,5 @@
-def print_hi(name):
-    print(f'Hi, {name}')
-    print(f'This is for advent of code 2021!')
+from d01_sonar_sweep.d01_sonar_sweep import solve as d01_solve
 
 
 if __name__ == '__main__':
-    print_hi('Isti')
+    d01_solve()
