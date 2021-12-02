@@ -1,7 +1,4 @@
-def read_file(filename):
-    with open(filename, "rt") as ifh:
-        lines = ifh.readlines()
-    return [line.replace("\n", "") for line in lines]
+from util import read_file
 
 
 def count_simple_increases(depths):
@@ -33,5 +30,3 @@ def solve():
     print(f"Day 1")
     print(f"  - Part 1: {count_simple_increases(depths)}")
     print(f"  - Part 2: {count_windowed_increases(depths)}")
-
-
