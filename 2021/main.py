@@ -5,6 +5,7 @@ from d05_hydrothermal_venture.d05_hydrothermal_venture import solve as d05_solve
 from d06_lanternfish.d06_lanternfish import solve as d06_solve
 from d07_the_treachery_of_whales.d01_the_treachery_of_whales import solve as d07_solve
 from d08_seven_segment_search.d08_seven_segment_search import solve as d08_solve
+from d09_smoke_basin.d09_smoke_basin import solve as d09_solve
 
 if __name__ == '__main__':
     d01_solve()
@@ -14,3 +15,4 @@ if __name__ == '__main__':
     d06_solve()
     d07_solve()
     d08_solve()
+    d09_solve()
