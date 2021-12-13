@@ -6,6 +6,7 @@ from d06_lanternfish.d06_lanternfish import solve as d06_solve
 from d07_the_treachery_of_whales.d01_the_treachery_of_whales import solve as d07_solve
 from d08_seven_segment_search.d08_seven_segment_search import solve as d08_solve
 from d09_smoke_basin.d09_smoke_basin import solve as d09_solve
+from d10_syntax_scoring.d10_syntax_scoring import solve as d10_solve
 
 if __name__ == '__main__':
     d01_solve()
@@ -16,3 +17,4 @@ if __name__ == '__main__':
     d07_solve()
     d08_solve()
     d09_solve()
+    d10_solve()
