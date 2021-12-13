@@ -8,6 +8,7 @@ from d08_seven_segment_search.d08_seven_segment_search import solve as d08_solve
 from d09_smoke_basin.d09_smoke_basin import solve as d09_solve
 from d10_syntax_scoring.d10_syntax_scoring import solve as d10_solve
 from d11_dumbo_octopus.d11_dumbo_octopus import solve as d11_solve
+from d12_passage_pathing.d12_passage_pathing import solve as d12_solve
 
 if __name__ == '__main__':
     d01_solve()
@@ -20,3 +21,4 @@ if __name__ == '__main__':
     d09_solve()
     d10_solve()
     d11_solve()
+    d12_solve()
