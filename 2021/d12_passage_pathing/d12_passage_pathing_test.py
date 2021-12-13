@@ -67,6 +67,69 @@ class PassagePathingTestCase(unittest.TestCase):
             caves.add_edge(start, end)
         self.assertEqual(226, caves.get_number_of_paths("start"))
 
+    def test_route_calculation_on_small_input_when_a_small_cave_can_be_visited_twice(self):
+        caves = d12.UndirectedGraph()
+        caves.enable_visit_a_small_cave_twice()
+        edges = [
+            ("start", "A"),
+            ("start", "b"),
+            ("A", "c"),
+            ("A", "b"),
+            ("b", "d"),
+            ("A", "end"),
+            ("b", "end")
+        ]
+        for start, end in edges:
+            caves.add_edge(start, end)
+        self.assertEqual(36, caves.get_number_of_paths("start"))
+
+
+    def test_route_calculation_on_middle_input_when_a_small_cave_can_be_visited_twice(self):
+        edges = [
+            ("dc", "end"),
+            ("HN", "start"),
+            ("start", "kj"),
+            ("dc", "start"),
+            ("dc", "HN"),
+            ("LN", "dc"),
+            ("HN", "end"),
+            ("kj", "sa"),
+            ("kj", "HN"),
+            ("kj", "dc")
+        ]
+        caves = d12.UndirectedGraph()
+        caves.enable_visit_a_small_cave_twice()
+        for start, end in edges:
+            caves.add_edge(start, end)
+        self.assertEqual(103, caves.get_number_of_paths("start"))
+
+    def test_route_calculation_on_big_input_when_a_small_cave_can_be_visited_twice(self):
+        caves = d12.UndirectedGraph()
+        caves.enable_visit_a_small_cave_twice()
+        edges = [
+            ("fs", "end"),
+            ("he", "DX"),
+            ("fs", "he"),
+            ("start", "DX"),
+            ("pj", "DX"),
+            ("end", "zg"),
+            ("zg", "sl"),
+            ("zg", "pj"),
+            ("pj", "he"),
+            ("RW", "he"),
+            ("fs", "DX"),
+            ("pj", "RW"),
+            ("zg", "RW"),
+            ("start", "pj"),
+            ("he", "WI"),
+            ("zg", "he"),
+            ("pj", "fs"),
+            ("start", "RW")
+        ]
+        for start, end in edges:
+            caves.add_edge(start, end)
+        self.assertEqual(3509, caves.get_number_of_paths("start"))
+
 
 if __name__ == '__main__':
     unittest.main()
