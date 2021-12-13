@@ -3,6 +3,7 @@ from util import read_file
 
 class DumboOctopus:
     def __init__(self, starting_status: list):
+        self._number_of_iterations = 0
         self._already_flashed = set()
         self._needs_to_flash = set()
         self._energy_levels = starting_status.copy()
@@ -10,6 +11,7 @@ class DumboOctopus:
         self._neighbour_deltas = [(y, x) for y in range(-1, 2) for x in range(-1, 2) if y != 0 or x != y]
 
     def next_state(self):
+        self._number_of_iterations += 1
         self._needs_to_flash = set()
         for row_index in range(len(self._energy_levels)):
             for column_index in range(len(self._energy_levels[row_index])):
@@ -45,6 +47,12 @@ class DumboOctopus:
     def get_total_flashes(self):
         return self._all_flashes
 
+    def get_energy_level(self):
+        return sum([sum(row) for row in self._energy_levels])
+
+    def get_number_of_iterations(self):
+        return self._number_of_iterations
+
 
 def solve():
     lines_of_file = read_file("d11_dumbo_octopus/input.txt")
@@ -52,6 +60,10 @@ def solve():
     octopus = DumboOctopus(octopus_energies)
     for _ in range(100):
         octopus.next_state()
+    total_flashes_after_100_iterations = octopus.get_total_flashes()
+    while octopus.get_energy_level() > 0:
+        octopus.next_state()
 
     print("Day 11:")
-    print(f"  - Part 1: {octopus.get_total_flashes()}")
+    print(f"  - Part 1: {total_flashes_after_100_iterations}")
+    print(f"  - Part 2: {octopus.get_number_of_iterations()}")
