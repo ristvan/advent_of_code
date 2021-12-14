@@ -1,6 +1,7 @@
 import unittest
 
-from d14_extended_polymerization.solution import extend_polymer, diff_between_most_and_least_common_elements
+from d14_extended_polymerization.solution import create_pairs_from_polymer, extend_polymer_pairs, \
+    diff_between_most_and_least_common_elements_from_pairs
 
 
 class ExtendedPolymerizationTestCase(unittest.TestCase):
@@ -24,43 +25,92 @@ class ExtendedPolymerizationTestCase(unittest.TestCase):
             "CN": "C"
         }
 
-    def test_one_step_polymerization(self):
-        polymer_template = "NNCB"
-        expected_polymer = "NCNBCHB"
-        self.assertEqual(expected_polymer, extend_polymer(polymer_template, self.rules))
-
-    def test_other_step_of_polymerization(self):
-        polymer_template = "NCNBCHB"
-        expected_polymer = "NBCCNBBBCBHCB"
-        self.assertEqual(expected_polymer, extend_polymer(polymer_template, self.rules))
-
-    def test_more_polymerizations(self):
-        testcases = {
-            ("NNCB", "NCNBCHB"),
-            ("NCNBCHB", "NBCCNBBBCBHCB"),
-            ("NBCCNBBBCBHCB", "NBBBCNCCNBBNBNBBCHBHHBCHB"),
-            ("NBBBCNCCNBBNBNBBCHBHHBCHB", "NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB"),
-            ("NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB", "NBBNBBNBBBNBBNBBCNCCNBBBCCNBCNCCNBBNBBNBBNBBNBBNBNBBNBBNBBNBBNBBCHBHHBCHBHHNHCNCHBCHBNBBCHBHHBCHB")
-        }
-        for input_polymer, expected_polymer in testcases:
-            self.assertEqual(expected_polymer, extend_polymer(input_polymer, self.rules))
-
-    def test_get_diff_between_most_and_least_common_elements(self):
-        testcases = {
-            ("NNCB", 1),
-            ("NCNBCHB", 1),
-            ("NBCCNBBBCBHCB", 5),
-            ("NBBBCNCCNBBNBNBBCHBHHBCHB", 7),
-            ("NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB", 18)
-        }
-        for input_polymer, expected_diff in testcases:
-            self.assertEqual(expected_diff, diff_between_most_and_least_common_elements(input_polymer))
-
-    def test_get_diff_between_most_and_least_common_elements_for_the_example(self):
+    def test_create_pairs_for_polymer(self):
         polymer = "NNCB"
-        for _ in range(10):
-            polymer = extend_polymer(polymer, self.rules)
-        self.assertEqual(1588, diff_between_most_and_least_common_elements(polymer))
+        expected_pairs = {
+            "NN": 1,
+            "NC": 1,
+            "CB": 1
+        }
+        self.assertDictEqual(expected_pairs, create_pairs_from_polymer(polymer))
+
+    def test_create_pairs_for_polymer_for_input(self):
+        polymer = "COPBCNPOBKCCFFBSVHKO"
+        expected_pairs = {
+            "CO": 1,
+            "OP": 1,
+            "PB": 1,
+            "BC": 1,
+            "CN": 1,
+            "NP": 1,
+            "PO": 1,
+            "OB": 1,
+            "BK": 1,
+            "KC": 1,
+            "CC": 1,
+            "CF": 1,
+            "FF": 1,
+            "FB": 1,
+            "BS": 1,
+            "SV": 1,
+            "VH": 1,
+            "HK": 1,
+            "KO": 1
+        }
+        self.assertDictEqual(expected_pairs, create_pairs_from_polymer(polymer))
+
+    def test_extend_polymer_pairs(self):
+        polymer_pairs = {
+            "NN": 1,
+            "NC": 1,
+            "CB": 1
+        }
+        expected_polymer_pairs = {
+            "NC": 1,
+            "CN": 1,
+            "NB": 1,
+            "BC": 1,
+            "CH": 1,
+            "HB": 1
+        }
+        actual_polymer_pairs = extend_polymer_pairs(polymer_pairs, self.rules)
+        self.assertEqual(expected_polymer_pairs, actual_polymer_pairs)
+
+        expected_polymer_pairs = {
+            "CN": 1,
+            "CB": 2,
+            "NB": 2,
+            "BC": 2,
+            "CC": 1,
+            "BB": 2,
+            "HC": 1,
+            "BH": 1
+        }
+        actual_polymer_pairs = extend_polymer_pairs(actual_polymer_pairs, self.rules)
+        self.assertEqual(expected_polymer_pairs, actual_polymer_pairs)
+
+    def test_solution_part_2(self):
+        polymer_template = "NNCB"
+        polymer_pairs = create_pairs_from_polymer(polymer_template)
+        self.assertEqual(1, diff_between_most_and_least_common_elements_from_pairs(polymer_pairs, polymer_template))
+
+        polymer_pairs = extend_polymer_pairs(polymer_pairs, self.rules)
+        self.assertEqual(1, diff_between_most_and_least_common_elements_from_pairs(polymer_pairs, polymer_template))
+
+        polymer_pairs = extend_polymer_pairs(polymer_pairs, self.rules)
+        self.assertEqual(5, diff_between_most_and_least_common_elements_from_pairs(polymer_pairs, polymer_template))
+
+        for _ in range(2):
+            polymer_pairs = extend_polymer_pairs(polymer_pairs, self.rules)
+        self.assertEqual(18, diff_between_most_and_least_common_elements_from_pairs(polymer_pairs, polymer_template))
+
+        for _ in range(6):
+            polymer_pairs = extend_polymer_pairs(polymer_pairs, self.rules)
+        self.assertEqual(1588, diff_between_most_and_least_common_elements_from_pairs(polymer_pairs, polymer_template))
+
+        for _ in range(30):
+            polymer_pairs = extend_polymer_pairs(polymer_pairs, self.rules)
+        self.assertEqual(2188189693529, diff_between_most_and_least_common_elements_from_pairs(polymer_pairs, polymer_template))
 
 
 if __name__ == '__main__':
