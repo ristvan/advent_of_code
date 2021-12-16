@@ -11,6 +11,7 @@ from d11_dumbo_octopus.d11_dumbo_octopus import solve as d11_solve
 from d12_passage_pathing.d12_passage_pathing import solve as d12_solve
 from d13_transparent_origami.d13_transparent_origami import solve as d13_solve
 from d14_extended_polymerization.solution import solve as d14_solve
+from d15_chiton.solution import solve as d15_solve
 
 if __name__ == '__main__':
     d01_solve()
@@ -26,3 +27,4 @@ if __name__ == '__main__':
     d12_solve()
     d13_solve()
     d14_solve()
+    d15_solve()
