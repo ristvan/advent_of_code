@@ -33,6 +33,24 @@ class CavernMap:
         return sum([sum(row) for row in self._map])
 
 
+class ExtendedCavernMap(CavernMap):
+    def __init__(self, cavern_map: list):
+        maze = list()
+        original_height = len(cavern_map)
+        original_width = len(cavern_map[0])
+        for row_index in range(5 * original_height):
+            row = list()
+            for column_index in range(5 * original_width):
+                y = row_index % original_height
+                x = column_index % original_width
+                diff = column_index // original_width + row_index // original_height
+                value = cavern_map[y][x] + diff
+                value = 9 if value % 9 == 0 else value % 9
+                row.append(value)
+            maze.append(row)
+        super(ExtendedCavernMap, self).__init__(maze)
+
+
 def find_a_route_with_the_lowest_risk(cavern_map: CavernMap):
     infinity = cavern_map.sum_of_items() + 1
     risk_map = [[infinity for _ in range(cavern_map.get_width())] for _ in range(cavern_map.get_height())]
@@ -52,8 +70,11 @@ def solve():
     line_of_files = read_file("d15_chiton/input.txt")
     maze = [[int(column) for column in row] for row in line_of_files]
     cavern_map = CavernMap(maze)
+    extended_cavern_map = ExtendedCavernMap(maze)
 
     minimal_risk = find_a_route_with_the_lowest_risk(cavern_map)
+    minimal_risk_part_2 = find_a_route_with_the_lowest_risk(extended_cavern_map)
 
     print("Day 15")
     print(f"  - Part 1: {minimal_risk}")
+    print(f"  - Part 2: {minimal_risk_part_2}")
