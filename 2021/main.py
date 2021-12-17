@@ -13,6 +13,7 @@ from d13_transparent_origami.d13_transparent_origami import solve as d13_solve
 from d14_extended_polymerization.solution import solve as d14_solve
 from d15_chiton.solution import solve as d15_solve
 from d16_packet_decoder.solution import solve as d16_solve
+from d17_trick_shot.solution import solve as d17_solve
 
 if __name__ == '__main__':
     d01_solve()
@@ -30,3 +31,4 @@ if __name__ == '__main__':
     d14_solve()
     d15_solve()
     d16_solve()
+    d17_solve()
