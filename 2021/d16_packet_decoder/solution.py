@@ -1,3 +1,5 @@
+import math
+
 from util import read_file
 
 LITERAL_VALUE = 4
@@ -29,7 +31,7 @@ class Literal:
     def __init__(self, value):
         self._value = value
 
-    def get_value(self):
+    def get_value(self, type=4):
         return self._value
 
     def get_version_summary(self):
@@ -54,6 +56,26 @@ class Operator:
     def get_version_summary(self):
         return sum([sub_packet.get_version_summary() for sub_packet in self._sub_packets]) if self._sub_packets else 0
 
+    def get_value(self, type_id):
+        sub_packets_ = [sub_packet.get_value() for sub_packet in self._sub_packets]
+        if type_id == 0:
+            result = sum(sub_packets_)
+        elif type_id == 1:
+            result = math.prod(sub_packets_)
+        elif type_id == 2:
+            result = min(sub_packets_)
+        elif type_id == 3:
+            result = max(sub_packets_)
+        elif type_id == 5:
+            result = 1 if sub_packets_[0] > sub_packets_[1] else 0
+        elif type_id == 6:
+            result = 1 if sub_packets_[0] < sub_packets_[1] else 0
+        elif type_id == 7:
+            result = 1 if sub_packets_[0] == sub_packets_[1] else 0
+        else:
+            result = 0
+        return result
+
 
 class Packet:
     def __init__(self, version, type):
@@ -76,6 +98,9 @@ class Packet:
     def get_version_summary(self):
         return self._version + (self._item.get_version_summary() if self._item else 0)
 
+    def get_value(self):
+        return self._item.get_value(self._type) if self._item is not None else 0
+
 
 class PacketDecoder:
     def __init__(self, encoded_packet):
@@ -88,7 +113,7 @@ class PacketDecoder:
 
     def _parse_packet(self):
         if len(self._binary_format) < 10:
-            return Packet(0, 0)
+            return Literal(0)
         version = int(self._binary_format[0:3], 2)
         type_id = int(self._binary_format[3:6], 2)
         packet = Packet(version, type_id)
@@ -117,9 +142,20 @@ class PacketDecoder:
         length_ = self._binary_format[0:sub_packet_length]
         length = int(length_, 2)
         self._binary_format = self._binary_format[sub_packet_length:]
-        operator = Operator(length)
-        for _ in range(length):
-            operator.add_sub_packet(self._parse_packet())
+        if length_type_id == 1:
+            operator = Operator(length)
+            for _ in range(length):
+                operator.add_sub_packet(self._parse_packet())
+        else:
+            saved_binary_format = self._binary_format[length:]
+            self._binary_format = self._binary_format[0:length]
+            operators = list()
+            while len(self._binary_format) > 9:
+                operators.append(self._parse_packet())
+            operator = Operator(len(operators))
+            for op in operators:
+                operator.add_sub_packet(op)
+            self._binary_format = saved_binary_format
 
         return operator
 
@@ -130,3 +166,4 @@ def solve():
 
     print("Day 16")
     print(f"  - Part 1: {x.get_version_summary()}")
+    print(f"  - Part 2: {x.get_value()}")
