@@ -38,26 +38,30 @@ def simulate(starting_y_velocity, starting_x_velocity, target):
             x_velocity -= 1
         y_velocity -= 1
 
-    return max_y
+    return max_y, is_hit_target(x, y, target)
 
 
 def find_trajectory_with_the_highest_y_coord(target):
     (top_y, top_x), (bottom_y, bottom_x) = target
     max_y = 0
-    for starting_y_velocity in range(-bottom_y):
-        for starting_x_velocity in range(top_x):
-            y = simulate(starting_y_velocity, starting_x_velocity, target)
-            if max_y < y:
+    hits = 0
+    for starting_y_velocity in range(bottom_y, -bottom_y):
+        for starting_x_velocity in range(bottom_x - bottom_y):
+            y, success = simulate(starting_y_velocity, starting_x_velocity, target)
+            if success and max_y < y:
                 max_y = y
+            if success:
+                hits += 1
 
-    return max_y
+    return max_y, hits
 
 
 def solve():
     lines_of_file = read_file("d17_trick_shot/input.txt")
     target_area = parse_target_area(lines_of_file[0])
 
-    max_y = find_trajectory_with_the_highest_y_coord(target_area)
+    max_y, hits = find_trajectory_with_the_highest_y_coord(target_area)
 
     print("Day 17")
     print(f"  - Part 1: {max_y}")
+    print(f"  - Part 2: {hits}")
