@@ -131,3 +131,5 @@ dmypy.json
 # PyCharm
 **/.idea
 >>>>>>> Prepare AoC 2021
+
+**/.vscode

@@ -1,0 +1,8 @@
+# Build docker image. Compile and run tests
+docker build -t aoc:2015 .
+
+# Run the application in the docker image.
+docker run --rm aoc:2015
+
+# Remove unnecessary intermediate images
+docker image prune --filter label=stage=builder
