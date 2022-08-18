@@ -16,5 +16,5 @@ public:
     void add_day(const int day, Day *solver);
 private:
     std::map<int, Day*> days;
-    const std::string& name;
+    const std::string name;
 };

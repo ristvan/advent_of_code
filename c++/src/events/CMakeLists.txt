@@ -1,4 +1,5 @@
-add_library(events event.cpp)
+add_library(events STATIC event.cpp)
+add_subdirectory(2015)
 
 target_include_directories(
     events

@@ -11,5 +11,6 @@ FROM ubuntu:bionic
 WORKDIR /opt/other
 
 COPY --from=build /build_dir/src/aoc ./
+COPY inputs inputs
 
 ENTRYPOINT ["./aoc"]
