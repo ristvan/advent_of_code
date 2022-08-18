@@ -1,12 +1,14 @@
 #pragma once
 
 #include <map>
+#include <string>
 
 class Day;
 
 class Event
 {
 public:
+    Event(const std::string &name);
     virtual ~Event();
 
     void solve_all_days();
@@ -14,4 +16,5 @@ public:
     void add_day(const int day, Day *solver);
 private:
     std::map<int, Day*> days;
+    const std::string& name;
 };

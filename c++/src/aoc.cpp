@@ -39,8 +39,10 @@ long long TestDay::get_result_of_part_two() const
 int main()
 {
     cout << "Version: " << aoc_VERSION_MAJOR << "." << aoc_VERSION_MINOR << "." << aoc_VERSION_PATCH << endl;
-    Event event;
+    Event event{"Test Event"};
     event.add_day(1, new TestDay());
     event.solve_all_days();
+    event.solve_day(1);
+    event.solve_day(28);
     return 0;
 }

@@ -2,8 +2,13 @@
 #include "common/day.hpp"
 
 #include <iostream>
+#include <string>
 
 using namespace std;
+
+Event::Event(const string& name): name(name)
+{
+}
 
 Event::~Event()
 {
@@ -16,24 +21,30 @@ Event::~Event()
 
 void Event::solve_all_days()
 {
+    cout << "Event: " << this->name << endl;
     for (auto& [day, solver]: this->days)
     {
         solver->solve();
-        cout << "Day " << day << ":" << endl;
-        cout << "  * Part 1: " << solver->get_result_of_part_one() << endl;
-        cout << "  * Part 2: " << solver->get_result_of_part_two() << endl;
+        cout << "  * Day " << day << ":" << endl;
+        cout << "      * Part 1: " << solver->get_result_of_part_one() << endl;
+        cout << "      * Part 2: " << solver->get_result_of_part_two() << endl;
     }
 }
 
 void Event::solve_day(const int day)
 {
+    cout << "Event: " << this->name << endl;
     if (this->days.count(day) > 0)
     {
         Day *solver = this->days[day];
         solver->solve();
-        cout << "Day " << day << ":" << endl;
-        cout << "  * Part 1: " << solver->get_result_of_part_one() << endl;
-        cout << "  * Part 2: " << solver->get_result_of_part_two() << endl;
+        cout << "  * Day " << day << ":" << endl;
+        cout << "      * Part 1: " << solver->get_result_of_part_one() << endl;
+        cout << "      * Part 2: " << solver->get_result_of_part_two() << endl;
+    }
+    else
+    {
+        cout << "  * Day " << day << ": Not Found" << endl;
     }
 }
 
