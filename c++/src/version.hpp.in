@@ -1,0 +1,6 @@
+#pragma once
+
+#define aoc_VERSION_MAJOR @aoc_VERSION_MAJOR@
+#define aoc_VERSION_MINOR @aoc_VERSION_MINOR@
+#define aoc_VERSION_PATCH @aoc_VERSION_PATCH@
+
