@@ -10,8 +10,8 @@ public:
     virtual ~Event();
 
     void solve_all_days();
-    void solve_day(const int id);
-    void add_day(const int id, Day *day);
+    void solve_day(const int day);
+    void add_day(const int day, Day *solver);
 private:
     std::map<int, Day*> days;
 };
