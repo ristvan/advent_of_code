@@ -1,10 +1,10 @@
 #include "factory.hpp"
 #include "events/event.hpp"
-#include "day01.hpp"
-#include "day02.hpp"
-#include "day03.hpp"
-#include "day04.hpp"
-#include "day05.hpp"
+#include "events/2015/days/day01/day01.hpp"
+#include "events/2015/days/day02/day02.hpp"
+#include "events/2015/days/day03/day03.hpp"
+#include "events/2015/days/day04/day04.hpp"
+#include "events/2015/days/day05/day05.hpp"
 #include <iostream>
 
 using namespace std;
