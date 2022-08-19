@@ -4,7 +4,7 @@ WORKDIR /build_dir
 
 COPY ./ ./
 
-RUN cmake . && cmake --build .
+RUN cmake . && cmake --build . && ./src/aoc_test
 
 FROM ubuntu:bionic
 
