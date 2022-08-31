@@ -1,7 +1,7 @@
 #include "day02.hpp"
+#include "common/file_handler.hpp"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <regex>
 #include <vector>
@@ -62,18 +62,7 @@ Day02::~Day02()
 
 void Day02::solve()
 {
-    ifstream inputFile;
-    inputFile.open("inputs/day_02.txt");
-    vector<string> lines;
-    if (inputFile.is_open())
-    {
-        string line;
-        while (getline(inputFile, line))
-        {
-            lines.push_back(line);
-        }
-        inputFile.close();
-    }
+    vector<string> lines = read_file("inputs/day_02.txt");
     vector<Box*> presents;
     for (string& line : lines)
     {

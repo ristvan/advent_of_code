@@ -1,30 +1,14 @@
 #include "day06.hpp"
 #include "helpers.hpp"
 #include "lightgrid.hpp"
+#include "common/file_handler.hpp"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-vector<string> read_file(string filename)
-{
-    ifstream inputFile;
-    inputFile.open(filename);
-    vector<string> lines;
-    if (inputFile.is_open())
-    {
-        string line;
-        while (getline(inputFile, line))
-        {
-            lines.push_back(line);
-        }
-        inputFile.close();
-    }
-    return lines;
-}
 
 Day06::Day06(): numberOfLightsAreLit(0), totalBrightness(0)
 {
@@ -51,8 +35,6 @@ void Day06::solve()
     }
     numberOfLightsAreLit = lightGrid.countLitLights();
     totalBrightness = brightnessLightGrid.totalBrightness();
-    // totalBrightness = brightnessLightGrid.countLitLights();
-
 }
 
 long long Day06::get_result_of_part_one() const

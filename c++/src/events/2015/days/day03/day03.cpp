@@ -1,7 +1,7 @@
 #include "day03.hpp"
+#include "common/file_handler.hpp"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <set>
 #include <tuple>
@@ -51,18 +51,7 @@ Day03::~Day03()
 
 void Day03::solve()
 {
-    ifstream inputFile;
-    inputFile.open("inputs/day_03.txt");
-    vector<string> lines;
-    if (inputFile.is_open())
-    {
-        string line;
-        while (getline(inputFile, line))
-        {
-            lines.push_back(line);
-        }
-        inputFile.close();
-    }
+    vector<string> lines = read_file("inputs/day_03.txt");
 
     Coordinate santasPosition = Coordinate(0, 0);
     Coordinate santasNextYearPosition = Coordinate(0, 0);

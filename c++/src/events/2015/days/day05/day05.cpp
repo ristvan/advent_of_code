@@ -1,7 +1,7 @@
 #include "day05.hpp"
+#include "common/file_handler.hpp"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <map>
@@ -115,18 +115,8 @@ Day05::~Day05()
 
 void Day05::solve()
 {
-    ifstream inputFile;
-    inputFile.open("inputs/day_05.txt");
-    vector<string> lines;
-    if (inputFile.is_open())
-    {
-        string line;
-        while (getline(inputFile, line))
-        {
-            lines.push_back(line);
-        }
-        inputFile.close();
-    }
+    vector<string> lines = read_file("inputs/day_05.txt");
+
     numberOfNiceStrings = numberOfNiceStringsChangedCondition = 0;
     for (const string& text: lines)
     {

@@ -1,7 +1,7 @@
 #include "day01.hpp"
+#include "common/file_handler.hpp"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 
 
@@ -13,14 +13,9 @@ Day01::~Day01()
 
 void Day01::solve()
 {
-    string line;
-    ifstream inputFile;
-    inputFile.open("inputs/day_01.txt");
-    if (inputFile.is_open())
-    {
-        inputFile >> line;
-        inputFile.close();
-    }
+    vector<string> lines = read_file("inputs/day_01.txt");
+    string line = lines[0];
+
     long long int index = 1;
     long long int level = 0;
     long long int firstMinusOne = -1;
