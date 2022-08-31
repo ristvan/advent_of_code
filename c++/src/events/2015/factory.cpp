@@ -6,6 +6,7 @@
 #include "events/2015/days/day04/day04.hpp"
 #include "events/2015/days/day05/day05.hpp"
 #include "events/2015/days/day06/day06.hpp"
+#include "events/2015/days/day07/day07.hpp"
 #include <iostream>
 
 using namespace std;
@@ -19,5 +20,6 @@ Event* create_event()
     event->add_day(4, new Day04);
     event->add_day(5, new Day05);
     event->add_day(6, new Day06);
+    event->add_day(7, new Day07);
     return event;
 }
