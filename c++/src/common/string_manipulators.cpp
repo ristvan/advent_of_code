@@ -1,4 +1,5 @@
 #include "string_manipulators.hpp"
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -17,4 +18,9 @@ vector<string> split(const string str, const string delimiter)
     }
     tokens.push_back(str.substr(start, end - start));
     return tokens;
+}
+
+bool isNumber(const string& str)
+{
+    return !str.empty() && all_of(str.begin(), str.end(), ::isdigit);
 }

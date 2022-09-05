@@ -66,3 +66,64 @@ TEST(AocCommon_StringManipulatorsTest, whenLongDelimiterIsGivenItIsWordkingCorre
     EXPECT_EQ("Super", tokens[1]);
     EXPECT_EQ("World", tokens[2]);
 }
+
+TEST(AocCommon_StringManipulators_IsNumberTest, whenEmptyStringIsGivenItIsNotANumber)
+{
+    string inputText{""};
+
+    EXPECT_FALSE(isNumber(inputText));
+}
+
+TEST(AocCommon_StringManipulators_IsNumberTest, whenStringWithoutNumberIsGivenItIsNotANumber)
+{
+    vector<string> inputTexts{
+        "abcdefghijklm",
+        "ababababababa",
+        "a",
+        "b",
+        "ab",
+        "HELLO",
+        "NOT",
+        "RSHIFT"
+    };
+    for (const string& text: inputTexts)
+    {
+        EXPECT_FALSE(isNumber(text));
+    }
+}
+
+TEST(AocCommon_StringManipulators_IsNumberTest, whenStringWithNumbersAndCharactersIsGivenItIsNotANumber)
+{
+    vector<string> inputTexts{
+        "1abcdefghijklm",
+        "a2b3a54ba6babababa",
+        "a125",
+        "13b",
+        "a13b",
+        "H69ELLO890",
+        "NOT1234567890",
+        "1R2S3H4I5F6T7"
+    };
+    for (const string& text: inputTexts)
+    {
+        EXPECT_FALSE(isNumber(text));
+    }
+}
+
+TEST(AocCommon_StringManipulators_IsNumberTest, whenStringWithOnlyNumbersIsGivenItIsANumber)
+{
+    vector<string> inputTexts{
+        "1",
+        "0",
+        "125",
+        "13",
+        "813",
+        "69890",
+        "1234567890",
+        "01234567"
+    };
+    for (const string& text: inputTexts)
+    {
+        EXPECT_TRUE(isNumber(text));
+    }
+}

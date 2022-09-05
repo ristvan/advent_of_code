@@ -4,3 +4,5 @@
 #include <vector>
 
 std::vector<std::string> split(const std::string str, const std::string delimiter);
+
+bool isNumber(const std::string& str);
