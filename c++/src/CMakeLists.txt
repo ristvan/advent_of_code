@@ -15,6 +15,7 @@ add_subdirectory(common)
 target_include_directories(aoc_test PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_link_libraries(
    aoc_test
+   events
    common
    gtest
    gtest_main
