@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Event* create_event()
+Event* events::y2015::create_event()
 {
     Event *event = new Event{"2015"};
     event->add_day(1, new Day01);

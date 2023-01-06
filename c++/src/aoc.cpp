@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     cout << "Version: " << aoc_VERSION_MAJOR << "." << aoc_VERSION_MINOR << "." << aoc_VERSION_PATCH << endl;
-    Event *event = create_event();
+    Event *event = events::y2015::create_event();
     event->solve_all_days();
     delete event;
     return 0;
