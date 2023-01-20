@@ -58,3 +58,8 @@ void Event::add_day(const int day, Day *solver)
     }
     this->days[day] = solver;
 }
+
+string Event::get_name() const
+{
+    return name;
+}

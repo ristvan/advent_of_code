@@ -14,6 +14,7 @@ public:
     void solve_all_days();
     void solve_day(const int day);
     void add_day(const int day, Day *solver);
+    std::string get_name() const;
 private:
     std::map<int, Day*> days;
     const std::string name;

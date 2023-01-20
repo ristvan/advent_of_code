@@ -2,6 +2,7 @@
 #include "version.hpp"
 #include "events/event.hpp"
 #include "events/2015/factory.hpp"
+#include "events/event_collection.hpp"
 
 #include <iostream>
 #include <string>
@@ -44,15 +45,17 @@ int main(int argc, char *argv[])
     cout << "Version: " << aoc_VERSION_MAJOR << "." << aoc_VERSION_MINOR << "." << aoc_VERSION_PATCH << endl << endl;
     cout << "Event: " << selectedEvent << endl;
     cout << "Day: " << (selectedDay == -1 ? "ALL" : to_string(selectedDay)) << endl << endl;
-    Event *event = events::y2015::create_event();
-    if (selectedDay > 0)
+
+    EventCollection *eventCollection = new EventCollection();
+    eventCollection->addEvent(events::y2015::create_event());
+    if (selectedEvent != "ALL")
     {
-        event->solve_day(selectedDay);
+        eventCollection->solveEvent(selectedEvent, selectedDay);
     }
     else
     {
-        event->solve_all_days();
+        eventCollection->solveAllEvents();
     }
-    delete event;
+    delete eventCollection;
     return 0;
 }
