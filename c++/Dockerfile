@@ -1,4 +1,4 @@
-FROM cpp-with-gtest-base:0.1.0 AS build
+FROM cpp-with-gtest-base:0.2.0 AS build
 LABEL stage=builder
 WORKDIR /build_dir
 
@@ -6,7 +6,7 @@ COPY ./ ./
 
 RUN cmake . && cmake --build . && ./src/aoc_test
 
-FROM ubuntu:bionic
+FROM gcc:13.2.0
 
 WORKDIR /opt/other
 
