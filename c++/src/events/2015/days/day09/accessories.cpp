@@ -1,13 +1,9 @@
 #include "accessories.hpp"
 #include "common/permutations.hpp"
 
-#include <format>
 #include <list>
-#include <map>
 #include <set>
 #include <string>
-#include <vector>
-#include <iostream>
 
 using namespace std;
 
