@@ -10,6 +10,7 @@
 #include "events/2015/days/day08/day08.hpp"
 #include "events/2015/days/day09/day09.hpp"
 #include "events/2015/days/day10/day10.hpp"
+#include "events/2015/days/day11/day11.hpp"
 
 using namespace std;
 
@@ -26,5 +27,6 @@ Event* events::y2015::create_event()
     event->add_day(8, new Day08);
     event->add_day(9, new Day09);
     event->add_day(10, new Day10);
+    event->add_day(11, new Day11);
     return event;
 }
