@@ -14,8 +14,8 @@ class Day05 : public Day
 public:
     ~Day05();
     void solve();
-    virtual long long get_result_of_part_one() const;
-    virtual long long get_result_of_part_two() const;
+    virtual std::string get_result_of_part_one() const;
+    virtual std::string get_result_of_part_two() const;
 private:
     long long numberOfNiceStrings;
     long long numberOfNiceStringsChangedCondition;

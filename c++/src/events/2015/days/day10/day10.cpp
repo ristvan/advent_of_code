@@ -48,12 +48,12 @@ void Day10::solve()
     valueOfRevisedA = sequence.size();
 }
 
-long long Day10::get_result_of_part_one() const
+string Day10::get_result_of_part_one() const
 {
-    return valueOfA;
+    return to_string(valueOfA);
 }
 
-long long Day10::get_result_of_part_two() const
+string Day10::get_result_of_part_two() const
 {
-    return valueOfRevisedA;
+    return to_string(valueOfRevisedA);
 }

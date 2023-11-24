@@ -36,12 +36,12 @@ void Day07::solve()
     valueOfRevisedA = expressionOfA->getValue(memory);
 }
 
-long long Day07::get_result_of_part_one() const
+string Day07::get_result_of_part_one() const
 {
-    return valueOfA;
+    return to_string(valueOfA);
 }
 
-long long Day07::get_result_of_part_two() const
+string Day07::get_result_of_part_two() const
 {
-    return valueOfRevisedA;
+    return to_string(valueOfRevisedA);
 }

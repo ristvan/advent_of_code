@@ -37,12 +37,12 @@ void Day06::solve()
     totalBrightness = brightnessLightGrid.totalBrightness();
 }
 
-long long Day06::get_result_of_part_one() const
+string Day06::get_result_of_part_one() const
 {
-    return numberOfLightsAreLit;
+    return to_string(numberOfLightsAreLit);
 }
 
-long long Day06::get_result_of_part_two() const
+string Day06::get_result_of_part_two() const
 {
-    return totalBrightness;
+    return to_string(totalBrightness);
 }

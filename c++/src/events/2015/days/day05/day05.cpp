@@ -127,12 +127,12 @@ void Day05::solve()
     }
 }
 
-long long Day05::get_result_of_part_one() const
+string Day05::get_result_of_part_one() const
 {
-    return numberOfNiceStrings;
+    return to_string(numberOfNiceStrings);
 }
 
-long long Day05::get_result_of_part_two() const
+string Day05::get_result_of_part_two() const
 {
-    return numberOfNiceStringsChangedCondition;
+    return to_string(numberOfNiceStringsChangedCondition);
 }

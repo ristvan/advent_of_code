@@ -33,12 +33,12 @@ void Day04::solve()
     }
 }
 
-long long Day04::get_result_of_part_one() const
+string Day04::get_result_of_part_one() const
 {
-    return numberProducingFiveZeros;
+    return to_string(numberProducingFiveZeros);
 }
 
-long long Day04::get_result_of_part_two() const
+string Day04::get_result_of_part_two() const
 {
-    return numberProducingSixZeros;
+    return to_string(numberProducingSixZeros);
 }

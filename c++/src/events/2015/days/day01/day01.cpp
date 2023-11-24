@@ -30,12 +30,12 @@ void Day01::solve()
     this->firstMinusOne = firstMinusOne;
 }
 
-long long Day01::get_result_of_part_one() const
+string Day01::get_result_of_part_one() const
 {
-    return this->level;
+    return to_string(this->level);
 }
 
-long long Day01::get_result_of_part_two() const
+string Day01::get_result_of_part_two() const
 {
-    return this->firstMinusOne;
+    return to_string(this->firstMinusOne);
 }

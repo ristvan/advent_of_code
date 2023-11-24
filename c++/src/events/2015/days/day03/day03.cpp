@@ -122,12 +122,12 @@ void Day03::solve()
     numberOfHousesSecondYear = static_cast<long long>(coordinatesNextYear.size());
 }
 
-long long Day03::get_result_of_part_one() const
+string Day03::get_result_of_part_one() const
 {
-    return numberOfHousesFirstYear;
+    return to_string(numberOfHousesFirstYear);
 }
 
-long long Day03::get_result_of_part_two() const
+string Day03::get_result_of_part_two() const
 {
-    return numberOfHousesSecondYear;
+    return to_string(numberOfHousesSecondYear);
 }

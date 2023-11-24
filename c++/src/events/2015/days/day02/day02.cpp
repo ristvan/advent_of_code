@@ -73,12 +73,12 @@ void Day02::solve()
     }
 }
 
-long long Day02::get_result_of_part_one() const
+string Day02::get_result_of_part_one() const
 {
-    return this->sumWrapping;
+    return to_string(this->sumWrapping);
 }
 
-long long Day02::get_result_of_part_two() const
+string Day02::get_result_of_part_two() const
 {
-    return this->sumRibbonLenght;
+    return to_string(this->sumRibbonLenght);
 }

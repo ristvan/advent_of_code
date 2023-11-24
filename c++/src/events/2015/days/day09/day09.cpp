@@ -42,12 +42,12 @@ void Day09::solve()
     valueOfRevisedA = minimalDistanceCalculator.getMaximumDistance();
 }
 
-long long Day09::get_result_of_part_one() const
+string Day09::get_result_of_part_one() const
 {
-    return valueOfA;
+    return to_string(valueOfA);
 }
 
-long long Day09::get_result_of_part_two() const
+string Day09::get_result_of_part_two() const
 {
-    return valueOfRevisedA;
+    return to_string(valueOfRevisedA);
 }
