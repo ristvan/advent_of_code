@@ -1,4 +1,4 @@
-FROM cpp-with-gtest-base:0.2.0 AS build
+FROM cpp-with-gtest-base:0.3.0 AS build
 LABEL stage=builder
 WORKDIR /build_dir
 
